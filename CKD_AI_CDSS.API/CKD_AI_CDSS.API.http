@@ -1,0 +1,6 @@
+@CKD_AI_CDSS.API_HostAddress = http://localhost:5149
+
+GET {{CKD_AI_CDSS.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

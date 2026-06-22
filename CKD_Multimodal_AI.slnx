@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../CKD_AI_CDSS/CKD_AI_CDSS.Application/CKD_AI_CDSS.Application.csproj" />
+  <Project Path="CKD_AI_CDSS.API/CKD_AI_CDSS.API.csproj" />
+  <Project Path="CKD_AI_CDSS.Domain/CKD_AI_CDSS.Domain.csproj" />
+  <Project Path="CKD_AI_CDSS.Infrastructure/CKD_AI_CDSS.Infrastructure.csproj" />
+</Solution>
