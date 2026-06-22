@@ -19,16 +19,23 @@ public class ChatbotController : ControllerBase
     }
 
     [HttpPost("message")]
-    public async Task<IActionResult> SendMessage(
-        [FromBody] SendMessageRequest request)
+    public async Task<IActionResult> SendMessage([FromBody] SendMessageRequest request)
     {
-        var userId = int.Parse(
-            User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        if (request == null || string.IsNullOrWhiteSpace(request.Message))
+            return BadRequest("Message cannot be empty.");
 
-        var result = await _mediator.Send(
-            new SendMessageCommand(
-                userId,
-                request.Message));
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!int.TryParse(userIdClaim, out var patientId))
+            return Unauthorized("Invalid user id.");
+
+        var command = new SendMessageCommand
+        {
+            PatientId = patientId,
+            Message = request.Message.Trim()
+        };
+
+        var result = await _mediator.Send(command);
 
         return Ok(result);
     }

@@ -1,4 +1,5 @@
-﻿using CKD_AI_CDSS.Application.Interfaces;
+﻿using CKD_AI_CDSS.Application.Features.Chatbot.Services;
+using CKD_AI_CDSS.Application.Interfaces;
 using CKD_AI_CDSS.Infrastructure.Auth;
 using CKD_AI_CDSS.Infrastructure.Authentication;
 using CKD_AI_CDSS.Infrastructure.Persistence;
@@ -34,7 +35,9 @@ public static class DependencyInjection
         services.AddScoped<IMonitoringRepository, MonitoringRepository>();
         services.AddScoped<IRetinalImageRepository, RetinalImageRepository>();
         services.AddScoped<IAuditLogRepository, AuditLogRepository>();
+        services.AddScoped<IChatbotService, ChatbotService>();
         services.AddScoped<ISystemMetricsRepository, SystemMetricsRepository>();
+
         return services;
     }
 }
